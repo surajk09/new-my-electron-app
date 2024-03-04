@@ -9,6 +9,10 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/surajk09/new-my-electron-app.git"
+  },
   "author": "Suraj khadekar",
   "license": "ISC",
   "devDependencies": {
@@ -22,6 +26,7 @@
     "electron": "^28.2.1"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "update-electron-app": "^3.0.0"
   }
 }

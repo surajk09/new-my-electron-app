@@ -1,6 +1,8 @@
 const { app, BrowserWindow, ipcMain,screen,Menu} = require('electron')
 const path = require('node:path')
 const os = require('os');
+const { updateElectronApp } = require('update-electron-app')
+updateElectronApp()
 
 const createWindow = () => {
   const {width,height} = screen.getPrimaryDisplay().workAreaSize;
