@@ -4,6 +4,8 @@ const os = require('os');
 const { updateElectronApp } = require('update-electron-app')
 updateElectronApp()
 
+if(require('electron-squirrel-startup')) return;
+
 const createWindow = () => {
   const {width,height} = screen.getPrimaryDisplay().workAreaSize;
   const win = new BrowserWindow({
