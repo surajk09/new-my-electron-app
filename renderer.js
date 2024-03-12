@@ -11,4 +11,4 @@ const NOTIFICATION_TITLE = 'Title'
 // }
 
 // document.getElementById("closeBtn").addEventListener("click", closeApp);
-  func()
+  
