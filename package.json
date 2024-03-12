@@ -13,6 +13,10 @@
     "type": "git",
     "url": "https://github.com/surajk09/new-my-electron-app.git"
   },
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
+},
   "author": "Suraj khadekar",
   "license": "ISC",
   "devDependencies": {
