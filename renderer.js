@@ -1,10 +1,4 @@
-
-const func = async () => {
-    const response = await window.versions.ping()
-    console.log(response) // prints out 'pong'
-  }
-
-  const NOTIFICATION_TITLE = 'Title'
+const NOTIFICATION_TITLE = 'Title'
   const NOTIFICATION_BODY = 'Notification from the Electron. Click to log to console.'
   const CLICK_MESSAGE = 'Notification clicked!'
   

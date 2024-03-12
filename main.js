@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain,screen,Menu} = require('electron')
 const path = require('node:path')
 const os = require('os');
 const { updateElectronApp } = require('update-electron-app')
-updateElectronApp()
+
 
 if(require('electron-squirrel-startup')) return;
 
@@ -63,9 +63,10 @@ const dockMenu = Menu.buildFromTemplate([
 ])
 
 app.whenReady().then(() => {
-  ipcMain.handle('ping', () => 'pong')
+  updateElectronApp();
   if (process.platform === 'darwin') {
-    app.dock.setMenu(dockMenu)
+    app.dock.setMenu(dockMenu);
+    
   }
   
 }).then(createWindow)
