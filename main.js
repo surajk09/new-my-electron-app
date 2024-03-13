@@ -2,14 +2,14 @@ const { app, BrowserWindow, ipcMain,screen,Menu} = require('electron')
 const path = require('node:path')
 const os = require('os');
 const { autoUpdater,AppUpdater } = require('electron-updater');
-
+let  win;
 autoUpdater.autoDownload=true;
 
 if(require('electron-squirrel-startup')) return;
 
 const createWindow = () => {
   const {width,height} = screen.getPrimaryDisplay().workAreaSize;
-  const win = new BrowserWindow({
+   win = new BrowserWindow({
     frame: true,
     width: 300,
     height: 400,
@@ -64,15 +64,16 @@ const dockMenu = Menu.buildFromTemplate([
 ])
 
 app.whenReady().then(() => {
-  if (process.platform === 'darwin') {
-    app.dock.setMenu(dockMenu);
-    
-  }
-  console.log("whenready1");
+  createWindow();
+
+  app.on("activate", function () {
+    if (BrowserWindow.getAllWindows().length == 0) createWindow();
+  });
+
   autoUpdater.checkForUpdates();
-  console.log("whenready2");
+  console.log(`Checking for updates. Current version ${app.getVersion()}`);
   
-}).then(createWindow)
+})
 
 ipcMain.on('close', () => {
   if (!win.isDestroyed()) {
@@ -82,3 +83,30 @@ ipcMain.on('close', () => {
 ipcMain.on('close', () => {
   app.quit()
 })
+/*New Update Available*/
+autoUpdater.on("update-available", (info) => {
+  console.log(`Update available. Current version ${app.getVersion()}`);
+  let pth = autoUpdater.downloadUpdate();
+  console.log(pth);
+});
+
+autoUpdater.on("update-not-available", (info) => {
+  console.log(`No update available. Current version ${app.getVersion()}`);
+});
+
+/*Download Completion Message*/
+autoUpdater.on("update-downloaded", (info) => {
+  console.log(`Update downloaded. Current version ${app.getVersion()}`);
+});
+
+autoUpdater.on("error", (info) => {
+  console.log(info);
+});
+
+
+
+
+//Global exception handler
+process.on("uncaughtException", function (err) {
+  console.log(err);
+});
