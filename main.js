@@ -4,7 +4,6 @@ const os = require('os');
 const { autoUpdater,AppUpdater } = require('electron-updater');
 
 autoUpdater.autoDownload=true;
-autoUpdater.autoInstallOnAppQuit=true;
 
 if(require('electron-squirrel-startup')) return;
 
@@ -69,7 +68,9 @@ app.whenReady().then(() => {
     app.dock.setMenu(dockMenu);
     
   }
+  console.log("whenready1");
   autoUpdater.checkForUpdates();
+  console.log("whenready2");
   
 }).then(createWindow)
 
