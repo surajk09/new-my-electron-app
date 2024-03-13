@@ -10,21 +10,20 @@
     "publish": "electron-forge publish"
   },
   "repository": "https://github.com/surajk09/new-my-electron-app.git",
-  "publish":{
-    "provider":"github",
-    "releaseType":"release"
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
   },
   "build": {
     "appId": "com.surajkhadekar.autoupdater",
-    "productName":"Test App",
-    "win":{
-      "target":"niss"
+    "productName": "Test App",
+    "win": {
+      "target": "niss"
     },
-    "directories":{
-      "output":"dist"
-    
-  }
-},
+    "directories": {
+      "output": "dist"
+    }
+  },
   "author": "Suraj khadekar",
   "license": "ISC",
   "devDependencies": {
@@ -36,11 +35,10 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.3.0",
     "@electron-forge/plugin-fuses": "^7.3.0",
     "@electron-forge/publisher-github": "^7.2.0",
-    "electron": "^28.2.1",
-    "electron-updater": "^6.1.8"
+    "electron": "^28.2.1"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
-    "update-electron-app": "^3.0.0"
+    "electron-updater": "^6.1.8"
   }
 }
