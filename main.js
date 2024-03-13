@@ -1,8 +1,10 @@
 const { app, BrowserWindow, ipcMain,screen,Menu} = require('electron')
 const path = require('node:path')
 const os = require('os');
-const { updateElectronApp } = require('update-electron-app')
+const { autoUpdater,AppUpdater } = require('electron-updater');
 
+autoUpdater.autoDownload=true;
+autoUpdater.autoInstallOnAppQuit=true;
 
 if(require('electron-squirrel-startup')) return;
 
@@ -63,14 +65,19 @@ const dockMenu = Menu.buildFromTemplate([
 ])
 
 app.whenReady().then(() => {
-  updateElectronApp();
   if (process.platform === 'darwin') {
     app.dock.setMenu(dockMenu);
     
   }
+  autoUpdater.checkForUpdates();
   
 }).then(createWindow)
 
+ipcMain.on('close', () => {
+  if (!win.isDestroyed()) {
+    win.close();
+  }
+});
 ipcMain.on('close', () => {
   app.quit()
 })
